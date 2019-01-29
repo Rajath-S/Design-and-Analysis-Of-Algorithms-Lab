@@ -8,13 +8,24 @@ Data* BubbleSort(Data* A, int n, int k)
 {
   int noSwaps;
   Data* copyatk=(Data*)malloc(n*sizeof(Data));
+  //note that even if k is greater than n it has to print out the sorted array after
+  if(n==1)
+  {
+    copy(A,copyatk,1);
+    return copyatk;
+  }
+
   for(int i=0;i<n-1;i++)
   {
+    //printf("iteration %d in bubble sort\n",i);
+
+
     if(i==k)
     {
       copy(A,copyatk,n);
     }
-    noSwaps=1;                   //note that we use noswaps here to stop iterations if everything is aldready sorted
+    noSwaps=1;
+               //note that we use noswaps here to stop iterations if everything is aldready sorted
     for(int j=0;j<n-1-i;j++)
     {
       if(A[j].value>A[j+1].value)
@@ -26,6 +37,7 @@ Data* BubbleSort(Data* A, int n, int k)
     if(noSwaps==1)
       return copyatk;
   }
+
 }
 //displays the array
 void display(Data* A,int n)
@@ -61,8 +73,15 @@ Data* SelectionSort(Data * A, int n, int k)
 {
   int min;
   Data* copya=(Data*)malloc(n*sizeof(Data));
+  if(n==1)
+  {
+    copy(A,copya,1);
+    return copya;
+  }
+
   for(int i=0;i<n-1;i++)
   {
+    printf("iteration %d in selection sort",i);
     if(i==k)
     {
       copy(A,copya,n);
