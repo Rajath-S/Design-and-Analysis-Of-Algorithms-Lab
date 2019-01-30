@@ -14,6 +14,7 @@ int main()
   {
     scanf("%d",&arr1[i].id);
     scanf("%d",&arr1[i].value);
+    getchar();
   }
   copy(arr1,arr2,n);
   //printf("enter k\n");
