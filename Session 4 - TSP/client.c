@@ -1,94 +1,41 @@
 #include<math.h>
-//#include<session4_tsp.h>
+#include"session4_tsp.h"
 #include<stdlib.h>
 #include<stdio.h>
-
+#include<time.h>
+#define nano 1000000000L
 int main()
 {
-  int get_next_permutation(int *permutation, int n);
-  void print_permutation(int *permutation, int n);
-
-  	int n;//permutation of n symbols
-  	int i; //loop index
-  	int *permutation; // permutation array
-
-  	scanf("%d", &n); //n > 1
-  	permutation = (int *) malloc(n * sizeof(int));
-    int A[n][n];
+  int n;
+  double time1,time2;
+  scanf("%d", &n); //n > 1
+  //cost_matrix=int *arr = (int *)malloc(n *n*sizeof(int));
+  int mincost;
+  //int cost_matrix[n][n];
+  int** graph=(int**)malloc(sizeof(int*)*n);
+  for(int i=0;i<n;i++)
+  {
+  	graph[i]=(int*)malloc(sizeof(int)*n);
+  	for(int j=0;j<n;j++)
+  	{
+  		scanf("%d",&graph[i][j]);
+  	}
+  }
+  /*
     for(int i=0;i<n;i++)
     {
       for(int j=0;j<n;j++)
       {
-        scanf("%d",&A[i][j]);
-      }
-    }
-    for(int i=0;i<n;i++)
-    {
-      for(int j=0;j<n;j++)
-      {
-        printf("%d ",A[i][j]);
+        printf("%d ",graph[i][j]);
       }
       printf("\n");
     }
-  // 	//first permutation
-  // 	for(i = 0; i < n; i++) {
-  // 		permutation[i] = i;
-  // 	}
-  //   int mincost=INFINITY;
-  // 	//do while there is a next permutation in lexicographic order
-  // 	do {
-  // 		//print_permutation(permutation, n);
-  // 	} while (get_next_permutation(permutation, n));
-  //
-  // 	return 0;
-  // }
-  //
-  // // Get the next permutation in lexicographic order
-  // int get_next_permutation(int *permutation, int n) {
-  // 	int i;
-  // 	int j;
-  // 	int k;
-  // 	int temp_int;
-  // 	int swaps;
-  //
-  // 	//find i
-  // 	for(i = n-2; i >= 0; i--) {
-  // 		if(permutation[i] < permutation[i+1]) {
-  // 			break;
-  // 		}
-  // 	}
-  // 	if(i == -1) {
-  // 		return 0;
-  // 	}
-  //
-  // 	for(j = i+1; j < n; j++) {
-  // 		if(permutation[j] < permutation[i]) {
-  // 			break;
-  // 		}
-  // 	}
-  // 	j--;
-  //
-  // 	temp_int = permutation[i];
-  // 	permutation[i] = permutation[j];
-  // 	permutation[j] = temp_int;
-  //
-  // 	//printf("DEBUG*i=%d,j=%d*", i, j); print_permutation(permutation, n);
-  // 	swaps = (n-1-i)/2;
-  // 	for(k = 0; k < swaps; k++) {
-  // 		temp_int = permutation[i+1+k];
-  // 		permutation[i+1+k] = permutation[n-1-k];
-  // 		permutation[n-1-k] = temp_int;
-  // 	}
-  // 	return 1;
-  // }
-  //
-  // void print_permutation(int *permutation, int n) {
-  // 	int i;
-  // 	printf("[");
-  // 	for(i = 0; i < n-1; i++) {
-  // 		printf("%d, ", permutation[i]);
-  // 	}
-  // 	printf("%d]\n", permutation[n-1]);
-  // }
-
+    */
+    struct timespec start1,start2,end1,end2;
+    clock_gettime(CLOCK_REALTIME,&start1);
+    mincost=tsp(graph,n);
+    clock_gettime(CLOCK_REALTIME,&end1);
+   printf("%d\n",mincost);
+   time1=(end1.tv_sec-start1.tv_sec)+(double)(end1.tv_nsec-start1.tv_nsec)/nano;
+   printf("%lf\n",time1);
 }
