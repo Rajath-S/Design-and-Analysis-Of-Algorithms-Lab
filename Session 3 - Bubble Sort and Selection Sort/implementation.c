@@ -81,7 +81,7 @@ Data* SelectionSort(Data * A, int n, int k)
 
   for(int i=0;i<n-1;i++)
   {
-    printf("iteration %d in selection sort",i);
+    //printf("iteration %d in selection sort",i);
     if(i==k)
     {
       copy(A,copya,n);
