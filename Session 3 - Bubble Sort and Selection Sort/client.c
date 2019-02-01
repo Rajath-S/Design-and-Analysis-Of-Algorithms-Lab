@@ -12,8 +12,8 @@ int main()
 
   for(int i=0;i<n;i++)       //take input and make a copy of the same array
   {
-    scanf("%d",&arr1[i].id);
-    scanf("%d",&arr1[i].value);
+    scanf("%d",&(arr1[i].id));
+    scanf("%d",&(arr1[i].value));
   }
   copy(arr1,arr2,n);
   //printf("enter k\n");
