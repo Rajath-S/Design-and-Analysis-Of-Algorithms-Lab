@@ -12,8 +12,8 @@ void display(Data* A,int n)
 void merge(Data* arr, int l, int m, int r)
 {
     int i, j, k;
-    int n1 = m - l + 1;
-    int n2 =  r - m;
+    int n1 = m - l + 1;  //size of Left array
+    int n2 =  r - m;       //size of Right Array
 
     /* create temp arrays */
     Data L[n1], R[n2];
@@ -70,7 +70,7 @@ void mergeSort(Data* arr, int l, int r)
     {
         // Same as (l+r)/2, but avoids overflow for
         // large l and h
-        int m = l+(r-l)/2;
+        int m = l+(r-l)/2;  // normal (l+r)/2 also works
 
         // Sort first and second halves
         mergeSort(arr, l, m);
@@ -79,6 +79,31 @@ void mergeSort(Data* arr, int l, int r)
         merge(arr, l, m, r);
     }
 }
+int BinarySearch(Data* arr, int l, int r, int x)
+{
+    if (l<=r) {
+        int mid = l + (r - l) / 2;
+
+        // If the element is present at the middle
+        // itself
+        if (arr[mid].value == x)
+            return mid;
+
+        // If element is smaller than mid, then
+        // it can only be present in left subarray
+        if (arr[mid].value > x)
+            return BinarySearch(arr, l, mid - 1, x);
+
+        // Else the element can only be present
+        // in right subarray
+        return BinarySearch(arr, mid + 1, r, x);
+    }
+
+    // We reach here when element is not
+    // present in array
+    return -1;
+}
+/* NEVER MIND THE CODE BELOW*/
 /*
 //Merge Sort
 //Use Merge Sort algorithm to sort the array of length with respect to their values.
@@ -136,27 +161,4 @@ void Merge(Data* A, int l,int r,int m)
 //Binary Search
 //Returns the index of one of the records of A which matches key_value with 'value'
 
-int BinarySearch(Data* arr, int l, int r, int x)
-{
-    if (l<=r) {
-        int mid = l + (r - l) / 2;
 
-        // If the element is present at the middle
-        // itself
-        if (arr[mid].value == x)
-            return mid;
-
-        // If element is smaller than mid, then
-        // it can only be present in left subarray
-        if (arr[mid].value > x)
-            return BinarySearch(arr, l, mid - 1, x);
-
-        // Else the element can only be present
-        // in right subarray
-        return BinarySearch(arr, mid + 1, r, x);
-    }
-
-    // We reach here when element is not
-    // present in array
-    return -1;
-}
