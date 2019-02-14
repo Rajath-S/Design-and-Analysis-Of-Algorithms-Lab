@@ -1,6 +1,6 @@
 //Header file for session6_quicksort.c
 
-typedef struct Data {
+typedef struct data {
 	int id;
 	int value;
 } Data;
@@ -13,3 +13,4 @@ void QuickSort(Data* A, int n);
 //Partitions the array on a pivot element and returns the index of the 
 // pivot element in the partitioned array of records
 int Partition(Data * A, int n);
+void swap(Data* A,int i,int j);

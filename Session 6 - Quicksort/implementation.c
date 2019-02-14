@@ -8,9 +8,11 @@ void QuickSort(Data* A, int n)
 {
 	if(n<=1)                      //base case
 		return ;
-	s=Partition(arr, n);// s contains the index
+	//printf("into quick");
+	int s=Partition(A, n);// s contains the index
+	//printf("%d",s);
 	QuickSort(A,s);
-	QuickSort(A+s+1,n);
+	QuickSort(A+s+1,n-s-1);
 	return;
 }
 
@@ -21,20 +23,20 @@ void QuickSort(Data* A, int n)
 // pivot element in the partitioned array of records
 int Partition(Data * A, int n)
 {
-	int p=A[0];// pivot is first element
+	int p=A[0].id;// pivot is first element
 	int i=1;
 	int j=n-1;
 	while(i<=j)   //i goes from left to right, j goes from right to left
 	{
-		while(i<=j && A[i]<p)
+		while(i<=j && A[i].id<p)
 			i++;
-		while(i<=j && A[j]>p)
+		while(i<=j && A[j].id>p)
 			j--;
 		if(i<j)
 		{
 			swap(A,i,j);
 			i++;
-			j++
+			j--;
 		}
 	}
 	swap(A,j,0);
