@@ -11,7 +11,7 @@ void QuickSort(Data* A, int n)
 	//printf("into quick");
 	int s=Partition(A, n);// s contains the index
 	//printf("%d",s);
-	QuickSort(A,s);
+	QuickSort(A,s-1);
 	QuickSort(A+s+1,n-s-1);
 	return;
 }
@@ -30,7 +30,7 @@ int Partition(Data * A, int n)
 	{
 		while(i<=j && A[i].id<p)
 			i++;
-		while(i<=j && A[j].id>p)
+		while(i<=j && A[j].id>=p)
 			j--;
 		if(i<j)
 		{
