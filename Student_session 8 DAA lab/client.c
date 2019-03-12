@@ -2,8 +2,10 @@
 #include<stdio.h>
 #include"session8_dfsbfs.h"
 
+
 int main()
 {
+	int dfs = 0;
   printf("starting function\n");
   int testcases,numOfNodes;
   scanf("%d",&testcases);
@@ -35,12 +37,16 @@ int main()
 		printf("\n");
 	}
 	//printf("\n");
+	int numcomp;
 	printf("computing number of components...\n");
-	int numcomp=count_components_dfs(x,numOfNodes); 
+	if (dfs)
+		numcomp = count_components_dfs(x, numOfNodes);
+	else
+		numcomp = count_components_dfs(x, numOfNodes);
 	printf("number of components=%d\n",numcomp);
 	for(int i=0;i<numOfNodes;i++)
 	{
-		free(&x[i]);
+		free(x[i]);
 	}
 	free(x);
 	printf("memory freed\n\n");
